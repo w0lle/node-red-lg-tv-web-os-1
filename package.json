@@ -1,0 +1,23 @@
+{
+    "name": "node-red-lg-tv-remote-os-1",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "node-red": {
+        "nodes": {
+          "remote": "remote.js",
+          "tv": "lg-tv-service.js"
+        }
+    },
+    "dependencies": {
+        "lgsmarttvremote": "^1.0.4",
+        "node-fetch": "^2.6.1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+  

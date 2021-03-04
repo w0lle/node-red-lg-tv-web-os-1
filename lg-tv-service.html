@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    RED.nodes.registerType('lg-tv',{
+        category: 'config',
+        defaults: {
+            host: {value:"",required:true},
+            code: {value:"",required:true}
+        },
+        label: function() {
+            return this.host+":"+this.port;
+        },
+        oneditprepare() {
+        $('#lgtv-connect').button().click(() => {
+            $.getJSON("/lgtv-connect-2");
+            //fetch(`http://${$('#node-config-input-host').val()}:8080/udap/api/pairing`, {method:"POST", body:"<auth><type>AuthKeyReq</type></auth>", headers: {"Content-Type":"text/xml; charset=utf-8"}});
+        });
+        }
+    
+    
+    });
+</script>
+
+<script type="text/html" data-template-name="lg-tv">
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-bookmark"></i> Host</label>
+        <input type="text" id="node-config-input-host">
+    </div>
+
+    <div class="form-row">
+        <button id="lgtv-connect" type="button" class="red-ui-button">Connect</button>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-code"><i class="fa fa-bookmark"></i> Code</label>
+        <input type="text" id="node-config-input-code">
+    </div>
+</script>
