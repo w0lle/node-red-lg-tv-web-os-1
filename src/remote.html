@@ -1,14 +1,15 @@
 <script type="text/javascript">
     RED.nodes.registerType('lg-remote',{
         category: 'LG TV Remote',
-        color: '#a6bbcf',
+        color: '#c8135c',
+        icon: "font-awesome/fa-television",
         defaults: {
             name: {value:""},
-            tv: {value:"",required: true, type:"lg-tv"}
+            tv: {value:"",required: true, type:"lg-tv"},
+            action: {value: ""}            
         },
         inputs:1,
         outputs:1,
-        icon: "file.png",
         label: function() {
             return this.name||"lg-remote";
         }
@@ -24,8 +25,94 @@
         <label for="node-input-tv"><i class="fa fa-tag"></i> TV</label>
         <input type="text" id="node-input-tv">
     </div>
+    <div class="form-row">
+        <label for="node-input-action"><i class="fa fa-tag"></i>Action</label>
+        <select type="text" id="node-input-action">
+            <option></option>
+            <option>Power</option>
+            <option>Number0</option>
+            <option>Number1</option>
+            <option>Number2</option>
+            <option>Number3</option>
+            <option>Number4</option>
+            <option>Number5</option>
+            <option>Number6</option>
+            <option>Number7</option>
+            <option>Number8</option>
+            <option>Number9</option>
+            <option>Up</option>
+            <option>Down</option>
+            <option>Left</option>
+            <option>Right</option>
+            <option>Ok</option>
+            <option>HomeMenu</option>
+            <option>MenuKey</option>
+            <option>PreviousKey</option>
+            <option>VolumeUp</option>
+            <option>VolumeDown</option>
+            <option>Mute</option>
+            <option>ChannelUp</option>
+            <option>ChannelDown</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Red</option>
+            <option>Yellow</option>
+            <option>Play</option>
+            <option>Pause</option>
+            <option>Stop</option>
+            <option>Fastforward</option>
+            <option>Rewind</option>
+            <option>SkipForward</option>
+            <option>SkipBackward</option>
+            <option>Record</option>
+            <option>RecordingList</option>
+            <option>Repeat</option>
+            <option>LiveTV</option>
+            <option>EPG</option>
+            <option>CurrentProgramInformation</option>
+            <option>AspectRatio</option>
+            <option>ExternalInput</option>
+            <option>PIPSecondaryVideo</option>
+            <option>ShowChangeSubtitle</option>
+            <option>Programlist</option>
+            <option>TeleText</option>
+            <option>Mark</option>
+            <option>_3DVideo</option>
+            <option>_3DLR</option>
+            <option>Dash</option>
+            <option>PreviousChannel</option>
+            <option>FavoriteChannel</option>
+            <option>Quickmenu</option>
+            <option>TextOption</option>
+            <option>AudioDescription</option>
+            <option>NetCastkey</option>
+            <option>Energysaving</option>
+            <option>AVmode</option>
+            <option>SIMPLINK</option>
+            <option>Exit</option>
+            <option>ReservationProgramsList</option>
+            <option>PIPchannelUP</option>
+            <option>PIPchannelDOWN</option>
+            <option>PrimarySecondaryVideo</option>
+            <option>MyApps</option>
+        </select>
+    </div>
 </script>
 
 <script type="text/html" data-help-name="lg-remote">
-    <p>A simple node that converts the message payloads into all lower-case characters</p>
+    <p>A node to control LG TV with WebOS1. For WebOS2 and above please use: <a href="https://flows.nodered.org/node/node-red-contrib-lgtv">node-red-contrib-lgtv</a></p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload
+            <span class="property-type">string | buffer</span>
+        </dt>
+        <dd> the payload of the message to publish. </dd>
+        <dt class="optional">topic <span class="property-type">string</span></dt>
+        <dd> the MQTT topic to publish to.</dd>
+    </dl>
+
+<h3>Details</h3>
+    <p>Either you select a action within the config dialog or use <code>msg.payload</code> with the same value. </p>
+    
+    
 </script>

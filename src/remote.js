@@ -5,6 +5,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
 
         this.tv = RED.nodes.getNode(config.tv);
+        this.action = config.action;
 
         if(this.tv){
             this.host = this.tv.host;
@@ -15,7 +16,12 @@ module.exports = function(RED) {
         var node = this;
 
         node.on('input', function(msg) {
-            node.lgremote.commandKey(node.lgremote.keyCodes[msg.payload]);
+            if(node.action){
+                node.lgremote.commandKey(node.lgremote.keyCodes[node.action]);
+            }else{
+                node.lgremote.commandKey(node.lgremote.keyCodes[msg.payload]);
+            }
+            //node.lgremote.commandKey(node.lgremote.keyCodes[msg.payload]);
             node.send(msg);
         });
     }

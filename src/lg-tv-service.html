@@ -1,6 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('lg-tv',{
         category: 'config',
+        icon: "font-awesome/fa-rss",
         defaults: {
             host: {value:"",required:true},
             code: {value:"",required:true}
@@ -11,7 +12,10 @@
         oneditprepare() {
             var that = this;
         $('#lgtv-connect').button().click(() => {
-            $.getJSON(`/lgtv-connect-2?host=${$("#node-config-input-host").val()}`);
+            $.get(`/lgtv-connect-2?host=${$("#node-config-input-host").val()}`, function(){
+                $('#node-config-input-code').prop("disabled", false);
+                $('#lgtv-pair').prop("disabled", false).removeClass(["ui-button-disabled ui-state-disabled"]);
+            });
         });
 
         $('#lgtv-pair').button().click(() => {
@@ -36,10 +40,22 @@
     </div>
     <div class="form-row">
         <label for="node-config-input-code"><i class="fa fa-bookmark"></i> Code</label>
-        <input type="text" id="node-config-input-code">
+        <input type="text" id="node-config-input-code" disabled='disabled'>
     </div>
 
     <div class="form-row">
-        <button id="lgtv-pair" type="button" class="red-ui-button">Pair</button>
+        <button id="lgtv-pair" type="button" class="red-ui-button" disabled="disabled">Pair</button>
     </div>
+</script>
+
+<script type="text/html" data-help-name="lg-tv">
+    <p>Let you connect to a LG TV with WebOS1</p>
+
+<h3>Details</h3>
+    <p>Start with entering the IP or DNS Name of your TV. After that click connect, so it requests the
+        Code. After that type the code into the Input and click pair. If the code disapperas the pairing
+        is finished.
+    </p>
+    
+    
 </script>

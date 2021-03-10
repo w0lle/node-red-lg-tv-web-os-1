@@ -1,22 +1,21 @@
 {
     "name": "node-red-lg-tv-web-os-1",
     "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
+    "description": "Node-Red node for old lg tv's with WebOS 1.0",
+    "author": "Wolle Schaf",
     "node-red": {
         "nodes": {
-            "remote": "remote.js",
-            "tv": "lg-tv-service.js"
+            "remote": "src/remote.js",
+            "tv": "src/lg-tv-service.js"
         }
     },
     "dependencies": {
         "lgsmarttvremote": "git+https://github.com/w0lle/LgSmartTvRemote.git",
         "node-fetch": "^2.6.1"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
+    "keywords": [
+        "node-red",
+        "lg"
+    ],
+    "license": "MIT"
 }
